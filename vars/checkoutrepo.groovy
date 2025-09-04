@@ -1,7 +1,7 @@
-def call(String branchName , String repoUrl) {
+def call(String branch, String repoUrl) {
     stage('Checkout') {
-        steps {
-            git branch: branchName, url: repoUrl
+        script {
+            git branch: branch, url: repoUrl
         }
     }
 }

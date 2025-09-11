@@ -1,10 +1,9 @@
 def call() {
-    script {
+    dir("${env.WORKSPACE}") {
         echo 'Listing files to verify docker-compose.yml'
         sh 'ls -l'
 
-        echo 'Build and start Docker images...'
-        sh 'docker-compose up -d --build'
-
+        echo 'Building Docker images...'
+        sh 'docker-compose build'
     }
 }

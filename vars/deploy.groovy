@@ -1,8 +1,6 @@
 def call() {
-    script {
-        dir("${env.WORKSPACE}") {
-            echo '🚀 Deploying...'
+    dir("${env.WORKSPACE}") {
+        echo 'Starting containers...'
             sh 'docker-compose up -d'
-        }
     }
 }

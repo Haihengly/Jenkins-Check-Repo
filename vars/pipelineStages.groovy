@@ -5,17 +5,17 @@ def call(String branch, String repoUrl) {
         stages {
             stage('Checkout') {
                 steps {
-                    checkoutStage(branch, repoUrl)
+                    checkoutrepo(branch, repoUrl)
                 }
             }
             stage('Build') {
                 steps {
-                    buildStage()
+                    build()
                 }
             }
             stage('Deploy') {
                 steps {
-                    deployStage()
+                    deploy()
                 }
             }
         }

@@ -1,32 +1,28 @@
-def call(String branch, String repoUrl) {
+def call() {
     pipeline {
         agent any
 
         stages {
             stage('Checkout') {
                 steps {
-                    checkoutrepo(branch, repoUrl)
+                    // checkoutrepo(branch, repoUrl)
+                    sh 'echo "Checkout stage placeholder"'
                 }
             }
-            stage('Build') {
-                steps {
-                    script {
-                        build()
-                    }
-                }
-            }
-            stage('Deploy') {
-                steps {
-                    script {
-                        deploy()
-                    }
-                }
-            }
-        }
-
-        post {
-            success { echo "✅ Pipeline finished successfully" }
-            failure { echo "❌ Pipeline failed" }
+            // stage('Build') {
+            //     steps {
+            //         script {
+            //             build()
+            //         }
+            //     }
+            // }
+            // stage('Deploy') {
+            //     steps {
+            //         script {
+            //             deploy()
+            //         }
+            //     }
+            // }
         }
     }
 }

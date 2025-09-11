@@ -10,12 +10,16 @@ def call(String branch, String repoUrl) {
             }
             stage('Build') {
                 steps {
-                    build()
+                    script {
+                        build()
+                    }
                 }
             }
             stage('Deploy') {
                 steps {
-                    deploy()
+                    script {
+                        deploy()
+                    }
                 }
             }
         }

@@ -7,7 +7,15 @@ def call() {
             // BRANCH_NAME = 'main'
             // REPO_URL = 'https://github.com/Haihengly/Products-Jenkins'
         }
-        myStages()
+        stages {
+            stage('Run All Stages') {
+                steps {
+                    script {
+                        myStages()
+                    }
+                }
+            }
+        }
         // stages {
         //     stage('Checkout') {
         //         steps {

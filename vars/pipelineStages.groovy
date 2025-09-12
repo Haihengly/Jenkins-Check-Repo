@@ -6,9 +6,26 @@ def call(String branch, String repoUrl) {
             stage('Checkout') {
                 steps {
                     checkoutrepo(branch, repoUrl)
-                    ''sh 'ls -la'
                 }
             }
+            stage('Build') {
+                steps {
+                    script {
+                        build()
+                    }
+                }
+            }
+            stage('Deploy') {
+                steps {
+                    script {
+                        deploy()
+                    }
+                }
+            }
+        }
+        post {
+            success { echo "✅ Pipeline finished successfully" }
+            failure { echo "❌ Pipeline failed" }
         }
     }
 }

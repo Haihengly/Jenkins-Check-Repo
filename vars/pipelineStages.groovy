@@ -1,11 +1,17 @@
-def call(String branch, String repoUrl) {
+def call() {
     pipeline {
         agent any
+        environment {
+            BOT_TOKEN = credentials('TELEGRAM_BOT_TOKEN')
+            CHAT_ID   = credentials('TELEGRAM_CHAT_ID')
+            BRANCH_NAME = 'main'
+            REPO_URL = 'https://github.com/Haihengly/Products-Jenkins'
+        }
 
         stages {
             stage('Checkout') {
                 steps {
-                    checkoutrepo(branch, repoUrl)
+                    checkoutrepo(BRANCH_NAME, REPO_URL)
                 }
             }
             stage('Build') {
@@ -24,8 +30,9 @@ def call(String branch, String repoUrl) {
             }
         }
         post {
-            success { echo "✅ Pipeline finished successfully" }
-            failure { echo "❌ Pipeline failed" }
+            success { script { telegramNotify.notify("SUCCESS") } }
+            failure { script { telegramNotify.notify("FAILURE") } }
+            unstable { script { telegramNotify.notify("UNSTABLE") } }
         }
     }
 }

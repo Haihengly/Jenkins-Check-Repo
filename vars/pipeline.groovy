@@ -28,7 +28,7 @@ def call() {
             //         }
             //     }
             // }
-            stage {
+            stage('testing') {
                 steps {
                     script {
                         myStages()

@@ -6,9 +6,7 @@ def call(String branch, String repoUrl) {
             stage('Checkout') {
                 steps {
                     checkoutrepo(branch, repoUrl)
-                    '''
-                        echo "Success"
-                    '''
+                    ''sh 'ls -la'
                 }
             }
         }

@@ -30,7 +30,9 @@ def call() {
             // }
             stage {
                 steps {
-                    myStages()
+                    script {
+                        myStages()
+                    }
                 }
             }
         }

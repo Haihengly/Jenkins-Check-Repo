@@ -7,35 +7,28 @@ def call() {
             // BRANCH_NAME = 'main'
             // REPO_URL = 'https://github.com/Haihengly/Products-Jenkins'
         }
-
-        stages {
-            // stage('Checkout') {
-            //     steps {
-            //         checkoutrepo(BRANCH_NAME, REPO_URL)
-            //     }
-            // }
-            // stage('Build') {
-            //     steps {
-            //         script {
-            //             build()
-            //         }
-            //     }
-            // }
-            // stage('Deploy') {
-            //     steps {
-            //         script {
-            //             deploy()
-            //         }
-            //     }
-            // }
-            stage('testing') {
-                steps {
-                    script {
-                        myStages()
-                    }
-                }
-            }
-        }
+        myStages()
+        // stages {
+        //     stage('Checkout') {
+        //         steps {
+        //             checkoutrepo(BRANCH_NAME, REPO_URL)
+        //         }
+        //     }
+        //     stage('Build') {
+        //         steps {
+        //             script {
+        //                 build()
+        //             }
+        //         }
+        //     }
+        //     stage('Deploy') {
+        //         steps {
+        //             script {
+        //                 deploy()
+        //             }
+        //         }
+        //     }
+        // }
         post {
             always{
                 success { script { telegramNotify.notify("SUCCESS") } }

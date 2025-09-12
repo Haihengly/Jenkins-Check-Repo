@@ -29,11 +29,9 @@ def call() {
             }
         }
         post {
-            always{
-                success { script { telegramNotify.notify("SUCCESS") } }
-                failure { script { telegramNotify.notify("FAILURE") } }
-                unstable { script { telegramNotify.notify("UNSTABLE") } }
-            }
+            success { script { telegramNotify.notify("SUCCESS") } }
+            failure { script { telegramNotify.notify("FAILURE") } }
+            unstable { script { telegramNotify.notify("UNSTABLE") } }
         }
     }
 }

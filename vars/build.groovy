@@ -8,26 +8,27 @@
 //     }
 // }
 
-// build.groovy
 def call(Map params = [:]) {
     // Set default values if not passed
-    def version     = params.version ?: "1.0.0"
-    def buildTool   = params.buildTool ?: "npm"
-    def dockerImage = params.dockerImage ?: "myapp:${version}"
-    def envName     = params.envName ?: "staging"
+    def version   = params.VERSION ?: "1.0.0"
+    def buildTool = params.BUILD_TOOL ?: "npm"
+    def envName   = params.ENV ?: "staging"
 
-    echo "Version: ${version}"
-    echo "Build Tool: ${buildTool}"
-    echo "Docker Image: ${dockerImage}"
-    echo "Environment: ${envName}"
+    echo "➡️ Version: ${version}"
+    echo "➡️ Build Tool: ${buildTool}"
+    echo "➡️ Environment: ${envName}"
 
     // Install dependencies and build
-    if (buildTool == "npm") {
+    if (buildTool.toLowerCase() == "npm") {
+        echo "➡️ Installing dependencies and building with npm..."
         sh "npm install && npm run build"
     } else {
         error "❌ Unknown build tool: ${buildTool}"
     }
 
-    // Build Docker image
-    sh "docker build -t ${dockerImage} ."
+    // Build Docker images using docker-compose
+    echo "➡️ Building Docker images with docker-compose..."
+    // Pass version as build-arg if your Dockerfile uses ARG VERSION
+    sh "docker-compose build --build-arg VERSION=${version}"
 }
+

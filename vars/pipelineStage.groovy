@@ -36,8 +36,8 @@
 // }
 
 
-def call(String branch, String repoUrl) {
-    def listStage = allStage(branch, repoUrl)
+def call(String branch, String repoUrl, Map buildParams = [:]) {
+    def listStage = allStage(branch, repoUrl, buildParams)
 
     pipeline {
         agent any

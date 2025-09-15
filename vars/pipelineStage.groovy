@@ -54,7 +54,7 @@ def call(String branch, String repoUrl, Map buildParams = [:]) {
                             echo "Running stage: ${s.name}"
                             // Wrap each dynamic stage in a 'stage' method (scripted)
                             stage(s.name) {
-                                s.action()
+                                s.action(buildParams)
                             }
                         }
                     }

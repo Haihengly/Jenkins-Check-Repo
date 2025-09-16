@@ -10,23 +10,45 @@
 def call(Map config) {
     return [
         [
-            name: 'Checkout', 
-            action: { -> checkoutrepo(config.branch, config.repoUrl) }
+            name: 'Checkout',
+            action: { ->
+                checkoutrepo([
+                    branch: config.branch,
+                    repoUrl: config.repoUrl
+                ])
+            }
         ],
         [
-            name: 'Build', 
-            action: { -> build(config) } // can use config.envName, config.version, etc.
+            name: 'Build',
+            action: { ->
+                if (config.build) {
+                    buildApp(config)
+                } else {
+                    echo "Skipping build"
+                }
+            }
         ],
         [
-            name: 'Deploy', 
-            action: { -> 
-                if(config.deploy) {
-                    deploy(config)
+            name: 'Test',
+            action: { ->
+                if (config.runTests) {
+                    echo "Running tests for ${config.version}"
+                    // sh 'npm test' or mvn test
+                } else {
+                    echo "Skipping tests"
+                }
+            }
+        ],
+        [
+            name: 'Deploy',
+            action: { ->
+                if (config.deploy) {
+                    deployApp(config)
                 } else {
                     echo "Skipping deploy"
                 }
             }
-        ] 
-        // add more stages if needed
+        ]
     ]
 }
+

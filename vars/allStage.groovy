@@ -11,26 +11,22 @@ def allStage(Map config) {
     return [
         [
             name: 'Checkout', 
-            action: { -> 
-                checkoutrepo(config.branch, config.repoUrl) 
-            }
+            action: { -> checkoutrepo(config.branch, config.repoUrl) }
         ],
         [
             name: 'Build', 
-            action: { -> 
-                build(config) // you can use config parameters inside build
-            }
+            action: { -> build(config) } // can use config.envName, config.version, etc.
         ],
         [
             name: 'Deploy', 
             action: { -> 
-                if(config.deploy) { // only deploy if deploy=true
+                if(config.deploy) {
                     deploy(config)
                 } else {
                     echo "Skipping deploy"
                 }
             }
         ]
-        // Add more stages here if needed, all can use config parameters
+        // add more stages if needed
     ]
 }

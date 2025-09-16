@@ -8,14 +8,13 @@
 //     }
 // }
 
-def call(Map params = [:]) {
+def call(PipelineConfig config) {
     // Set default values if not passed
-    def version   = params.version ?: "1.0.0"
-    def buildTool = params.buildTool ?: "npm"
-    def envName   = params.envName ?: "staging"
+    def version   = config.version ?: "1.0.0"
+
+    def envName   = config.envName ?: "staging"
 
     echo "Version: ${version}"
-    echo "Build Tool: ${buildTool}"
     echo "Environment: ${envName}"
 
     // Build Docker images using docker-compose

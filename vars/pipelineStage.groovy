@@ -36,8 +36,8 @@
 // }
 
 
-def call(String branch, String repoUrl, Map buildParams = [:]) {
-    def listStage = allStage(branch, repoUrl, buildParams)
+def call(PipelineConfig config) {
+    def listStage = allStage(config)
 
     pipeline {
         agent any
@@ -54,7 +54,7 @@ def call(String branch, String repoUrl, Map buildParams = [:]) {
                             echo "Running stage: ${s.name}"
                             // Wrap each dynamic stage in a 'stage' method (scripted)
                             stage(s.name) {
-                                s.action(buildParams)
+                                s.action()
                             }
                         }
                     }

@@ -1,3 +1,3 @@
-def call(String branch, String repoUrl) {
-    git branch: branch, url: repoUrl, credentialsId: 'git_token'
+def call(PipelineConfig config) {
+    git branch: config.branch, url: config.repoUrl, credentialsId: 'git_token'
 }

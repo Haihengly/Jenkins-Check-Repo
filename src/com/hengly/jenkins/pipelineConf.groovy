@@ -1,3 +1,5 @@
+package com.hengly.jenkins
+
 class PipelineConfig {
     String envName = 'Staging'
     String version = '1.0.0'

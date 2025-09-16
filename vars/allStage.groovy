@@ -20,22 +20,22 @@ def call(Map config) {
         ],
         [
             name: 'Build Stage',
-            action: { ->
-                if (config.build) { 
-                    build(config)
-                } else {
-                    echo "Skipping build"
-                }
+            action: { -> build(config)
+                // if (config.build) { 
+                //     build(config)
+                // } else {
+                //     echo "Skipping build"
+                // }
             }
         ],
         [
             name: 'Deploy Stage',
-            action: { ->
-                if (config.deploy) {
-                    deploy(config)
-                } else {
-                    echo "Skipping deploy"
-                }
+            action: { -> deploy(config)
+                // if (config.deploy) {
+                //     deploy(config)
+                // } else {
+                //     echo "Skipping deploy"
+                // }
             }
         ]
     ]

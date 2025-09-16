@@ -9,11 +9,8 @@
 // }
 
 def call(Map config) { 
-    // Set default values if not passed
-
-
     echo "Building Docker images with docker-compose..."
-    sh "docker-compose build --build-arg VERSION=${version}"
+    sh "docker-compose build --build-arg VERSION=${config.version}"
 }
 
 

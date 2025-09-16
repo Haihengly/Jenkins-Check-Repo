@@ -11,11 +11,11 @@ def call(Map config) {
     return [
         [
             name: 'Checkout Repo Stage',
-            action: { ->
-                checkoutrepo([
-                    branch: config.branch,
-                    repoUrl: config.repoUrl
-                ])
+            action: { -> checkoutrepo(config)
+                // checkoutrepo([
+                //     branch: config.branch,
+                //     repoUrl: config.repoUrl
+                // ])
             }
         ],
         [

@@ -44,7 +44,7 @@ def call(Map config) {
         environment {
             BOT_TOKEN = credentials('TELEGRAM_BOT_TOKEN')
             CHAT_ID   = credentials('TELEGRAM_CHAT_ID')
-        }
+        } 
         stages {
             // Use a single stage to wrap dynamic stages in scripted block
             stage('Run Dynamic Stages') {

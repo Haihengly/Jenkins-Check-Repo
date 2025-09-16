@@ -8,7 +8,7 @@
 //     }
 // }
 
-def call(Map config) {
+def call(Map config) { 
     // Set default values if not passed
     def version   = config.version ?: "1.0.0"
 

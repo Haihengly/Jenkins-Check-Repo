@@ -7,7 +7,7 @@
 // }
 
 
-def allStage(Map config) {
+def call(Map config) {
     return [
         [
             name: 'Checkout', 
@@ -26,7 +26,7 @@ def allStage(Map config) {
                     echo "Skipping deploy"
                 }
             }
-        ]
+        ] 
         // add more stages if needed
     ]
 }

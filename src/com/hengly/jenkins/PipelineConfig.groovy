@@ -11,7 +11,7 @@
 // }
 
 package com.hengly.jenkins
-
+ 
 class PipelineConfig implements Serializable {
     String envName = 'Staging'
     String version = '1.0.0'

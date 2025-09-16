@@ -22,20 +22,9 @@ def call(Map config) {
             name: 'Build',
             action: { ->
                 if (config.build) {
-                    buildApp(config)
+                    build(config)
                 } else {
                     echo "Skipping build"
-                }
-            }
-        ],
-        [
-            name: 'Test',
-            action: { ->
-                if (config.runTests) {
-                    echo "Running tests for ${config.version}"
-                    // sh 'npm test' or mvn test
-                } else {
-                    echo "Skipping tests"
                 }
             }
         ],
@@ -43,7 +32,7 @@ def call(Map config) {
             name: 'Deploy',
             action: { ->
                 if (config.deploy) {
-                    deployApp(config)
+                    deploy(config)
                 } else {
                     echo "Skipping deploy"
                 }

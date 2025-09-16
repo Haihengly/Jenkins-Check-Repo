@@ -1,4 +1,4 @@
-def call(PipelineConfig config) {
+def call(Map config) {
     dir("${env.WORKSPACE}") {
         def version   = config.version ?: "1.0.0"
         def envName   = config.envName ?: "staging"

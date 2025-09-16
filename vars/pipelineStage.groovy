@@ -36,7 +36,7 @@
 // }
 
 
-def call(PipelineConfig config) {
+def call(Map config) {
     def listStage = allStage(config)
 
     pipeline {

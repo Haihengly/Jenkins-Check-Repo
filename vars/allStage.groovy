@@ -7,7 +7,7 @@
 // }
 
 
-def allStage(PipelineConfig config) {
+def allStage(Map config) {
     return [
         [
             name: 'Checkout', 

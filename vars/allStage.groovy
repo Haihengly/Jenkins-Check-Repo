@@ -10,7 +10,7 @@
 def call(Map config) {
     return [
         [
-            name: 'Checkout',
+            name: 'Checkout Repo Stage',
             action: { ->
                 checkoutrepo([
                     branch: config.branch,
@@ -19,9 +19,9 @@ def call(Map config) {
             }
         ],
         [
-            name: 'Build',
+            name: 'Build Stage',
             action: { ->
-                if (config.build) {
+                if (config.build) { 
                     build(config)
                 } else {
                     echo "Skipping build"
@@ -29,7 +29,7 @@ def call(Map config) {
             }
         ],
         [
-            name: 'Deploy',
+            name: 'Deploy Stage',
             action: { ->
                 if (config.deploy) {
                     deploy(config)

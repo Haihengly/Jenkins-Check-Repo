@@ -51,7 +51,7 @@ def call(Map config) {
                 steps {
                     script {
                         for (s in listStage) {
-                            echo "Running stage: ${s.name}"
+                            echo "Running : ${s.name}"
                             // Wrap each dynamic stage in a 'stage' method (scripted)
                             stage(s.name) {
                                 s.action()

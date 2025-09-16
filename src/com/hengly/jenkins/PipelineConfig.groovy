@@ -1,24 +1,13 @@
-// package com.hengly.jenkins
-
-// class PipelineConfig {
-//     String envName = 'Staging'
-//     String version = '1.0.0'
-//     boolean deploy = true
-//     boolean runTests = true
-
-//     String branch
-//     String repoUrl 
-// }
-
 package com.hengly.jenkins
  
 class PipelineConfig implements Serializable {
     String envName = 'Staging'
     String version = '1.0.0'
     boolean deploy = false
+    boolean build = false
     boolean runTests = true
-    String branch = 'main'
-    String repoUrl = ''
+    String branch 
+    String repoUrl
 
     PipelineConfig(Map params = [:]) {
         envName   = params.get('envName', envName)

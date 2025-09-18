@@ -1,5 +1,5 @@
 def call(Map config) {
-    def CLONE_DIR = "/home/amhengly/code-clone/"
+    def CLONE_DIR = "${env.HOME}/code-clone/"
 
     // Clean old code
     sh "rm -rf ${CLONE_DIR}/*"

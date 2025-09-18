@@ -3,5 +3,5 @@ def call(Map config) {
     def STORE_DIR = "${env.HOME}/My-Docker"
 
     // Copy code into Docker context
-    sh "cp -r ${CLONE_DIR}/ ${STORE_DIR}/${config.BUILD_DIR}/"
+    sh "cp -r ${CLONE_DIR}/. ${STORE_DIR}/${config.BUILD_DIR}/"
 }

@@ -1,7 +1,17 @@
 def call(Map config) {
-    git (
-        branch: config.branch, 
-        url: config.repoUrl, 
-        credentialsId: 'git_token'
-    )
+    def CLONE_DIR = "/code-clone/"
+
+    // Clean old code
+    sh "rm -rf ${CLONE_DIR}/*"
+
+    // Clone latest repo
+    sh "git clone ${config.repoUrl} ${CLONE_DIR}"
+
+
+    // git (
+    //     branch: config.branch, 
+    //     url: config.repoUrl, 
+    //     credentialsId: 'git_token'
+    // )
 }
+ 

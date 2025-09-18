@@ -11,6 +11,13 @@ def call(Map config) {
             }
         ],
         [
+            name: 'Prepare Build',
+            action: { ->
+                echo "Preparing Build Environment"
+                copyCode.groovy(config)
+            }
+        ],
+        [
             name: 'Build',
             action: { ->
                 if (buildFlag) {

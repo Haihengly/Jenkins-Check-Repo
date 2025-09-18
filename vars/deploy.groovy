@@ -1,7 +1,11 @@
 def call(Map config) {
-    dir("${env.WORKSPACE}") {
-        echo 'Starting containers...'
-            sh 'docker-compose up -d'
-    }
+    def STORE_DIR = "/My-Docker/"
+
+    echo 'Starting containers...'
+    sh """
+        cd ${STORE_DIR}/${config.BUILD_DIR}
+        docker compose up -d
+    """
+
 }
  

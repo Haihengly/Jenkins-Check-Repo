@@ -2,7 +2,7 @@ def call(Map config) {
     def CLONE_DIR = "${env.HOME}/code-clone/"
 
     // Clean old code
-    sh "rm -rf ${CLONE_DIR}/*"
+    sh "rm -rf ${CLONE_DIR}"
 
     // Clone latest repo
     sh "git clone ${config.repoUrl} ${CLONE_DIR}"

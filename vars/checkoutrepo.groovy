@@ -1,13 +1,13 @@
 def call(Map config) {
-    def CLONE_DIR = "${env.HOME}/code-clone/"
+    def CLONE_DIR = "${env.HOME}/code-clone"
 
-    // Clean old code
-    sh "rm -rf ${CLONE_DIR}"
-
-    // Clone latest repo
-    sh "cd ${env.HOME}"
-    sh "git clone ${config.repoUrl}"
-    sh "ls -l ${CLONE_DIR}"
+    sh """
+        rm -rf ${CLONE_DIR}
+        cd ${env.HOME}
+        git clone ${config.repoUrl} code-clone
+        ls -l ${CLONE_DIR}
+    """
+}
 
 
 
@@ -17,4 +17,3 @@ def call(Map config) {
     //     credentialsId: 'git_token'
     // )
 }
- 

@@ -6,6 +6,8 @@ def call(Map config) {
 
     // Clone latest repo
     sh "git clone ${config.repoUrl} ${CLONE_DIR}"
+    sh "ls -l ${CLONE_DIR}"
+
 
 
     // git (

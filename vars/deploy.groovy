@@ -4,6 +4,7 @@ def call(Map config) {
     echo 'Starting containers...'
     sh """
         cd ${STORE_DIR}
+        docker-compose down
         docker-compose up -d
     """
 

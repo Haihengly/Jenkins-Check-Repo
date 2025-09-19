@@ -4,7 +4,7 @@ def call(Map config) {
     echo "Building Docker images with docker-compose..."
     sh """
         cd ${STORE_DIR}
-        docker compose version
-        docker compose build
+        docker-compose version
+        docker-compose build
     """
 }

@@ -5,6 +5,6 @@ def call(Map config) {
     sh """
         cd ${STORE_DIR}/${config.BUILD_DIR}
         docker-compose version
-        docker-compose build --build-arg VERSION=${config.version} my-store
+        docker-compose build 
     """
 }

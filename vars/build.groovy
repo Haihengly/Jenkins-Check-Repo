@@ -1,10 +1,10 @@
 def call(Map config) { 
-    def STORE_DIR = "${env.HOME}/My-Docker"
+    def STORE_DIR = "/My-Docker/Dev-Service"
 
     echo "Building Docker images with docker-compose..."
     sh """
-        cd ${STORE_DIR}/${config.BUILD_DIR}
-        docker-compose version
-        docker-compose build
+        cd ${STORE_DIR}
+        docker compose version
+        docker compose build
     """
 }

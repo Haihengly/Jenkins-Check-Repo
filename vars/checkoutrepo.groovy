@@ -8,6 +8,8 @@ def call(Map config) {
             git clone -b ${config.branch} ${config.repoUrl} ${CLONE_DIR}/${config.BUILD_DIR}/App-clone
         fi
 
+        sh 'ls -l /var/jenkins_home/My-Docker/Dev-Service/docker-compose.yml'
+
         # Ensure only app code is refreshed, Dockerfile/compose stay safe
         ls -l ${CLONE_DIR}/${config.BUILD_DIR}/App-clone
     """

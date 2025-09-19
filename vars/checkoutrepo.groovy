@@ -1,5 +1,5 @@
 def call(Map config) {
-    def CLONE_DIR = "/My-Docker"
+    def CLONE_DIR = "${env.HOME}/My-Docker"
 
     sh """
         if [ -d "${CLONE_DIR}/${config.BUILD_DIR}/.git" ]; then

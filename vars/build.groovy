@@ -4,7 +4,7 @@ def call(Map config) {
     echo "Building Docker images with docker-compose..."
     sh """
         cd ${STORE_DIR}/${config.BUILD_DIR}
-        docker compose version
-        docker compose build --build-arg VERSION=${config.version} my-store
+        docker-compose version
+        docker-compose build --build-arg VERSION=${config.version} my-store
     """
 }

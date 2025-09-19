@@ -1,5 +1,5 @@
 def call(Map config) {
-    def STORE_DIR = "/My-Docker"
+    def STORE_DIR = "${env.HOME}/My-Docker"
 
     echo 'Starting containers...'
     sh """

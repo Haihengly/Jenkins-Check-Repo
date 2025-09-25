@@ -24,18 +24,27 @@ def call(Map config) {
             }
         }
         post {
-            success { script { 
-                // sh "git config --global --add safe.directory $WORKSPACE" 
-                telegramNotify.notify("SUCCESS") 
-                } }
-            failure { script { 
-                // sh "git config --global --add safe.directory $WORKSPACE"
-                telegramNotify.notify("FAILURE") 
-            } }
-            unstable { script { 
-                // sh "git config --global --add safe.directory $WORKSPACE"
-                telegramNotify.notify("UNSTABLE") 
-            } }
+            success { 
+                script {
+                    dir("/My-Docker/Dev-Service/${config.BUILD_DIR}") {
+                        telegramNotify.notify("SUCCESS")
+                    }
+                }
+            }
+            failure { 
+                script {
+                    dir("/My-Docker/Dev-Service/${config.BUILD_DIR}") {
+                        telegramNotify.notify("FAILURE")
+                    }
+                }
+            }
+            unstable { 
+                script {
+                    dir("/My-Docker/Dev-Service/${config.BUILD_DIR}") {
+                        telegramNotify.notify("UNSTABLE")
+                    }
+                }
+            }
         }
     }
 }

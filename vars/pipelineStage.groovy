@@ -24,22 +24,22 @@ def call(Map config) {
                 }
             }
         }
-        post {
-            success { 
-                script {
-                    telegramNotify.notify("SUCCESS", "${CLONE_DIR}/${config.BUILD_DIR}")
-                }
-            }
-            failure { 
-                script {
-                    telegramNotify.notify("FAILURE", "${CLONE_DIR}/${config.BUILD_DIR}")
-                }
-            }
-            unstable { 
-                script {
-                    telegramNotify.notify("UNSTABLE", "${CLONE_DIR}/${config.BUILD_DIR}")
-                }
-            }
-        }
+        // post {
+        //     success { 
+        //         script {
+        //             telegramNotify.notify("SUCCESS", "${CLONE_DIR}/${config.BUILD_DIR}")
+        //         }
+        //     }
+        //     failure { 
+        //         script {
+        //             telegramNotify.notify("FAILURE", "${CLONE_DIR}/${config.BUILD_DIR}")
+        //         }
+        //     }
+        //     unstable { 
+        //         script {
+        //             telegramNotify.notify("UNSTABLE", "${CLONE_DIR}/${config.BUILD_DIR}")
+        //         }
+        //     }
+        // }
     }
 }

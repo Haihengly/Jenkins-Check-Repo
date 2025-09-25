@@ -25,15 +25,15 @@ def call(Map config) {
         }
         post {
             success { script { 
-                sh "git config --global --add safe.directory $WORKSPACE" 
+                // sh "git config --global --add safe.directory $WORKSPACE" 
                 telegramNotify.notify("SUCCESS") 
                 } }
             failure { script { 
-                sh "git config --global --add safe.directory $WORKSPACE"
+                // sh "git config --global --add safe.directory $WORKSPACE"
                 telegramNotify.notify("FAILURE") 
             } }
             unstable { script { 
-                sh "git config --global --add safe.directory $WORKSPACE"
+                // sh "git config --global --add safe.directory $WORKSPACE"
                 telegramNotify.notify("UNSTABLE") 
             } }
         }

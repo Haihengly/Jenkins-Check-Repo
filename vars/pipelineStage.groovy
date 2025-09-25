@@ -26,23 +26,17 @@ def call(Map config) {
         post {
             success { 
                 script {
-                    dir("/My-Docker/Dev-Service/${config.BUILD_DIR}") {
-                        telegramNotify.notify("SUCCESS")
-                    }
+                    telegramNotify.notify("SUCCESS", "/My-Docker/Dev-Service/${config.BUILD_DIR}")
                 }
             }
             failure { 
                 script {
-                    dir("/My-Docker/Dev-Service/${config.BUILD_DIR}") {
-                        telegramNotify.notify("FAILURE")
-                    }
+                        telegramNotify.notify("FAILURE", "/My-Docker/Dev-Service/${config.BUILD_DIR}")
                 }
             }
             unstable { 
                 script {
-                    dir("/My-Docker/Dev-Service/${config.BUILD_DIR}") {
-                        telegramNotify.notify("UNSTABLE")
-                    }
+                    telegramNotify.notify("UNSTABLE", "/My-Docker/Dev-Service/${config.BUILD_DIR}")
                 }
             }
         }

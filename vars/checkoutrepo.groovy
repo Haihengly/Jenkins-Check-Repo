@@ -1,4 +1,12 @@
 def call(Map config) {
+
+    // SCM check in Jenkins workspace
+    dir("${env.WORKSPACE}/.scm-detect") {
+        checkout([$class: 'GitSCM',
+                  branches: [[name: "*/${config.branch}"]],
+                  userRemoteConfigs: [[url: config.REPO_URL]]])
+    }
+
     def CLONE_DIR = "/My-Docker/Dev-Service"
 
     sh """

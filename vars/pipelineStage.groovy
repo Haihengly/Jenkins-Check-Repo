@@ -1,9 +1,6 @@
 def call(Map config) {
     def listStage = allStage(config)
     def CLONE_DIR = "/My-Docker/Dev-Service"
-    dir("${env.WORKSPACE}/.scm-detect") {
-        git branch: config.branch, url: config.REPO_URL
-    }
 
     pipeline {
         agent any

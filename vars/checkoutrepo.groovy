@@ -1,9 +1,4 @@
 def call(Map config) {
-
-    dir("${env.WORKSPACE}/.scm-detect") {
-        git branch: config.branch, url: config.REPO_URL
-    }
-
     def CLONE_DIR = "/My-Docker/Dev-Service"
 
     sh """

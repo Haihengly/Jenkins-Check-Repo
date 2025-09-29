@@ -11,6 +11,7 @@ def call(Map config) {
     sh """
       rm -rf ${CLONE_DIR}/${config.BUILD_DIR}
       cp -r ${env.WORKSPACE}/.scm-detect ${CLONE_DIR}/${config.BUILD_DIR}
+      ls ${env.WORKSPACE}/.scm-detect
     """
 
     // sh """

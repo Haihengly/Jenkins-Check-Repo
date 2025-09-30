@@ -5,7 +5,7 @@ def call(Map config) {
 
     echo 'Starting containers...'
     sh """
-        cd ${STORE_DIR}/${config.FOLDER}-${config.envName}
+        cd ${STORE_DIR}
         export BUILD_DIR=${config.FOLDER}-${config.envName}
         docker compose ${composeFiles} --env-file ${envFile} down
         docker compose ${composeFiles} --env-file ${envFile} up -d

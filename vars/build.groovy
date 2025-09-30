@@ -5,7 +5,7 @@ def call(Map config) {
 
     echo "Building Docker images with docker-compose..."
     sh """
-        cd ${STORE_DIR}/${config.FOLDER}-${config.envName}
+        cd ${STORE_DIR}
         export BUILD_DIR=${config.FOLDER}-${config.envName}
         docker compose ${composeFiles} --env-file ${envFile} version
         docker compose ${composeFiles} --env-file ${envFile} build

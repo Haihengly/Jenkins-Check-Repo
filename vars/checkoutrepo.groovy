@@ -1,5 +1,5 @@
 def call(Map config) {
-    def STORE_DIR = "/My-Docker/Dev-Service/${config.FOLDER}-${config.envName}"
+    def STORE_DIR = "/My-Docker/Dev-Service"
 
     dir("${env.WORKSPACE}/.scm-detect") {
       checkout([$class: 'GitSCM',
@@ -9,9 +9,9 @@ def call(Map config) {
     }
 
     sh """
-      rm -rf ${STORE_DIR}
-      mkdir -p ${STORE_DIR}
-      cp -r ${env.WORKSPACE}/.scm-detect/* ${STORE_DIR}
+      rm -rf ${STORE_DIR}/${config.FOLDER}-${config.envName}
+      mkdir -p ${STORE_DIR}/${config.FOLDER}-${config.envName}
+      cp -r ${env.WORKSPACE}/.scm-detect/* ${STORE_DIR}/${config.FOLDER}-${config.envName}
       ls ${env.WORKSPACE}/.scm-detect
     """
 

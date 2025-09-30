@@ -1,7 +1,6 @@
 def call(Map config) {
     def listStage = allStage(config)
     def STORE_DIR = "/My-Docker/Dev-Service"
-    def gitRepoDir = "${env.WORKSPACE}/.scm-detect"
 
     pipeline {
         agent any

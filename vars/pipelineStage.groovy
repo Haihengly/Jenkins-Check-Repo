@@ -1,6 +1,6 @@
 def call(Map config) {
     def listStage = allStage(config)
-    def CLONE_DIR = "/My-Docker/Dev-Service"
+    def STORE_DIR = "/My-Docker/Dev-Service"
 
     pipeline {
         agent any
@@ -27,17 +27,17 @@ def call(Map config) {
         post {
             success { 
                 script {
-                    telegramNotify.notify("SUCCESS", "${CLONE_DIR}/${config.BUILD_DIR}")
+                    telegramNotify.notify("SUCCESS", "${STORE_DIR}/${config.FOLDER}-${config.envName}")
                 }
             }
             failure { 
                 script {
-                    telegramNotify.notify("FAILURE", "${CLONE_DIR}/${config.BUILD_DIR}")
+                    telegramNotify.notify("FAILURE", "${STORE_DIR}/${config.FOLDER}-${config.envName}")
                 }
             }
             unstable { 
                 script {
-                    telegramNotify.notify("UNSTABLE", "${CLONE_DIR}/${config.BUILD_DIR}")
+                    telegramNotify.notify("UNSTABLE", "${STORE_DIR}/${config.FOLDER}-${config.envName}")
                 }
             }
         }

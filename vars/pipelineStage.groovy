@@ -27,20 +27,17 @@ def call(Map config) {
         post {
             success { 
                 script {
-                    def gitRepoDir = "${env.WORKSPACE}/.scm-detect" // always real Git repo
-                    telegramNotify.notify("SUCCESS", gitRepoDir, config)
+                    telegramNotify.notify("SUCCESS", "${STORE_DIR}/${config.FOLDER}-${config.envName}")
                 }
             }
             failure { 
                 script {
-                    def gitRepoDir = "${env.WORKSPACE}/.scm-detect"
-                    telegramNotify.notify("FAILURE", gitRepoDir, config)
+                    telegramNotify.notify("FAILURE", "${STORE_DIR}/${config.FOLDER}-${config.envName}")
                 }
             }
             unstable { 
                 script {
-                    def gitRepoDir = "${env.WORKSPACE}/.scm-detect"
-                    telegramNotify.notify("UNSTABLE", gitRepoDir, config)
+                    telegramNotify.notify("UNSTABLE", "${STORE_DIR}/${config.FOLDER}-${config.envName}")
                 }
             }
         }

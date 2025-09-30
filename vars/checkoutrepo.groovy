@@ -1,6 +1,5 @@
 def call(Map config) {
-    def CLONE_DIR = "/My-Docker/Dev-Service"
-
+    def STORE_DIR = "/My-Docker/Dev-Service/${config.FOLDER}-${config.envName}"
 
     dir("${env.WORKSPACE}/.scm-detect") {
       checkout([$class: 'GitSCM',
@@ -8,11 +7,15 @@ def call(Map config) {
         userRemoteConfigs: [[url: config.REPO_URL]]
       ])
     }
+
     sh """
-      rm -rf ${CLONE_DIR}/${config.BUILD_DIR}
-      cp -r ${env.WORKSPACE}/.scm-detect ${CLONE_DIR}/${config.BUILD_DIR}
+      rm -rf ${STORE_DIR}
+      mkdir -p ${STORE_DIR}
+      cp -r ${env.WORKSPACE}/.scm-detect ${STORE_DIR}
       ls ${env.WORKSPACE}/.scm-detect
     """
+
+}
 
     // sh """
     //     rm -rf ${CLONE_DIR}/${config.BUILD_DIR} 
@@ -21,5 +24,3 @@ def call(Map config) {
     //     git clone -b ${config.branch} ${config.REPO_URL} ${CLONE_DIR}/${config.BUILD_DIR}
     //     ls -la ${CLONE_DIR}/${config.BUILD_DIR}
     // """
-
-}

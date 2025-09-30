@@ -1,6 +1,7 @@
 def call(Map config) {
     def listStage = allStage(config)
     def STORE_DIR = "/My-Docker/Dev-Service"
+    def gitRepoDir = "${env.WORKSPACE}/.scm-detect"
 
     pipeline {
         agent any
@@ -27,17 +28,17 @@ def call(Map config) {
         post {
             success { 
                 script {
-                    telegramNotify.notify("SUCCESS", ""${env.WORKSPACE}/.scm-detect"")
+                    telegramNotify.notify("SUCCESS", "${gitRepoDir}")
                 }
             }
             failure { 
                 script {
-                    telegramNotify.notify("FAILURE", ""${env.WORKSPACE}/.scm-detect"")
+                    telegramNotify.notify("FAILURE", "${gitRepoDir}")
                 }
             }
             unstable { 
                 script {
-                    telegramNotify.notify("UNSTABLE", ""${env.WORKSPACE}/.scm-detect"")
+                    telegramNotify.notify("UNSTABLE", "${gitRepoDir}")
                 }
             }
         }

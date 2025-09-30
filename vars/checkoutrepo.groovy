@@ -11,7 +11,7 @@ def call(Map config) {
     sh """
       rm -rf ${STORE_DIR}
       mkdir -p ${STORE_DIR}
-      cp -r ${env.WORKSPACE}/.scm-detect ${STORE_DIR}
+      cp -r ${env.WORKSPACE}/.scm-detect/* ${STORE_DIR}
       ls ${env.WORKSPACE}/.scm-detect
     """
 

@@ -7,7 +7,6 @@ def call(Map config) {
     sh """
         cd ${STORE_DIR}
         export BUILD_DIR=${config.FOLDER}-${config.envName}
-        docker compose ${composeFiles} --env-file ${envFile} down
         docker compose ${composeFiles} --env-file ${envFile} up -d
     """
 }

@@ -1,6 +1,5 @@
 def call(Map config) {
     def listStage = allStage(config)
-    def STORE_DIR = "/My-Docker/Dev-Service"
 
     pipeline {
         agent any
@@ -27,17 +26,17 @@ def call(Map config) {
         post {
             success { 
                 script {
-                    telegramNotify.notify("SUCCESS", "${STORE_DIR}/${config.FOLDER}-${config.envName}")
+                    telegramNotify.notify("SUCCESS")
                 }
             }
             failure { 
                 script {
-                    telegramNotify.notify("FAILURE", "${STORE_DIR}/${config.FOLDER}-${config.envName}")
+                    telegramNotify.notify("FAILURE")
                 }
             }
             unstable { 
                 script {
-                    telegramNotify.notify("UNSTABLE", "${STORE_DIR}/${config.FOLDER}-${config.envName}")
+                    telegramNotify.notify("UNSTABLE")
                 }
             }
         }

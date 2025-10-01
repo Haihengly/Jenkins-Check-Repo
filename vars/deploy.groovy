@@ -11,4 +11,3 @@ def call(Map config) {
         docker compose ${composeFiles} --env-file ${envFile} up -d
     """
 }
- 

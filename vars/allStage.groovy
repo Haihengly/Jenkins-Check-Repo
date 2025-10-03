@@ -4,6 +4,13 @@ def call(Map config) {
 
     return [
         [
+            name: 'SSH',
+            action: { ->
+                echo "ssh to vm4"
+                sshRemote()
+            }
+        ],
+        [
             name: 'Checkout',
             action: { ->
                 echo "Checking out branch ${config.branch}"

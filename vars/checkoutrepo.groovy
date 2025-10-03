@@ -9,6 +9,7 @@ def call(Map config) {
     }
 
     sh """
+      ssh jenkins@34.87.120.95
       rm -rf ${STORE_DIR}/${config.FOLDER}-${config.envName}
       mkdir -p ${STORE_DIR}/${config.FOLDER}-${config.envName}
       cp -r ${env.WORKSPACE}/.scm-detect/* ${STORE_DIR}/${config.FOLDER}-${config.envName}

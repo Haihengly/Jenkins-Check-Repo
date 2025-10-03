@@ -5,6 +5,7 @@ def call(Map config) {
 
     echo 'Starting containers...'
     sh """
+        ssh jenkins@34.87.120.95
         cd ${STORE_DIR}
         export BUILD_DIR=${config.FOLDER}-${config.envName}
         docker compose ${composeFiles} --env-file ${envFile} up -d

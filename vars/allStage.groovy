@@ -3,13 +3,13 @@ def call(Map config) {
     def deployFlag = config.get('deploy', true)
 
     return [
-        [
-            name: 'SSH',
-            action: { ->
-                echo "ssh to vm4"
-                sshRemote()
-            }
-        ],
+        // [
+        //     name: 'SSH',
+        //     action: { ->
+        //         echo "ssh to vm4"
+        //         sshRemote()
+        //     }
+        // ],
         [
             name: 'Checkout',
             action: { ->

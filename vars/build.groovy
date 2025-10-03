@@ -5,10 +5,11 @@ def call(Map config) {
 
     echo "Building Docker images with docker-compose..."
     sh """
-        ssh jenkins@34.87.120.95
+        ssh jenkins@34.87.120.95 '
         cd ${STORE_DIR}
         export BUILD_DIR=${config.FOLDER}-${config.envName}
         docker compose ${composeFiles} --env-file ${envFile} version
         docker compose ${composeFiles} --env-file ${envFile} build
+        '
     """
 }

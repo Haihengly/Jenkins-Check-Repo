@@ -3,6 +3,6 @@ def call() {
       ssh jenkins@34.87.120.95
       whoami 
       cd /
-      ll
+      ls -l
     """
 }

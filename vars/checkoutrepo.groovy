@@ -40,7 +40,7 @@ def call(Map config) {
 
     // Transfer files to remote server and build/deploy
     sh """
-      scp -r ${TMP_DIR} jenkins@34.87.120.95:${STORE_DIR}/
+      scp -r ${TMP_DIR} jenkins@vm6:${STORE_DIR}/
     """
 }
 
